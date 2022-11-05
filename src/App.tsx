@@ -6,6 +6,7 @@ import { Icon } from './components/icon'
 import { sortByChronological, sortByReleaseDate } from './utils/sorter'
 import { Movie } from './data/types/movies'
 import { OrderType } from './data/types/order'
+import { Header } from './components/header'
 
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -36,7 +37,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="AppTitle">Saga do Infinito</h1>
+      <Header />
 
       <div>
         <div className="buttons">

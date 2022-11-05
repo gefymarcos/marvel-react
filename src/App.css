@@ -89,10 +89,7 @@
   align-items: center;
   flex-direction: row
 }
-.appTitle {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
+
 .appOrderBy {
   font-size: 0.75rem;
 }
@@ -102,9 +99,6 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .appTitle {
-    font-size: 0.5rem;
-  }
   .card {
     max-width: 23%;
   }
