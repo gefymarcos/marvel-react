@@ -5,8 +5,7 @@ import { IMAGE_URL, IMDB_URL } from './config'
 import { Icon } from './components/icon'
 import { sortByChronological, sortByReleaseDate } from './utils/sorter'
 import { Movie } from './data/types/movies'
-
-type OrderType = "CHRONOLOGICAL" | "RELEASE_DATE";
+import { OrderType } from './data/types/order'
 
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -14,7 +13,7 @@ function App() {
 
   useEffect(() => {
     getMovies().then(result => {
-      setMovies(result ? result : [])
+      setMovies(result)
       localStorage.setItem("data", JSON.stringify(result))
     });
   }, [])
