@@ -6,5 +6,5 @@ export type Movie = {
   imdb_id: string;
   overview: string;
   homepage: string;
-
+  index: number;
 }
