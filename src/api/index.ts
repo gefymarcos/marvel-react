@@ -1,6 +1,7 @@
+import { Movie } from '../data/types/movies';
 import { iMovies, iMoviesIndex } from './movies'
 
-export const getMovies = async () => {
+export const getMovies: () => Promise<Movie[]> = async () => {
     const dataCache = localStorage.getItem("data");
     if (!dataCache) {
         const allPromisses = iMovies.map(async ({ id }) => {
@@ -14,9 +15,8 @@ export const getMovies = async () => {
     }
 }
 
-const addIndex = (array: any) => {
-    return array.map((ar: any) => {
-        // @ts-ignore
-        return { ...ar, index: iMoviesIndex[ar.id].index }
+const addIndex = (movies: Movie[]) => {
+    return movies.map((movie: Movie) => {
+        return { ...movie, index: iMoviesIndex[movie.id].index }
     })
 }
