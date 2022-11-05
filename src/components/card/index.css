@@ -1,0 +1,25 @@
+.cardTitle {
+  height: 60px;
+}
+.cardTop {
+  display: flex;
+  flex-direction: column;
+  max-width: fit-content;
+  justify-content: center;
+  align-items: center;
+}
+.cardBottom {
+  max-width: 85%;
+}
+.cardIconBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cardDescription {
+  min-height: 150px;
+  height: 150px;
+  overflow: auto;
+  text-overflow: ellipsis;
+}
+
