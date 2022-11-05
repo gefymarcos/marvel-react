@@ -1,0 +1,18 @@
+.orderOptionsSelected {
+  background-color: #646cffaa;
+  border: 2px solid #646cff;
+  margin: 1rem 1rem 1rem 8px;
+}
+.orderOptionsDefault {
+  background-color: rgba(0, 0, 0, 0.87);
+  margin: 1rem 1rem 1rem 8px;
+}
+.orderOptionsButtons {
+  display: flex;
+  align-items: center;
+  flex-direction: row
+}
+.orderOptionsAppOrderBy {
+  font-size: 0.75rem;
+}
+
