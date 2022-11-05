@@ -1,12 +1,12 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 import { getMovies } from './api'
-import { IMAGE_URL, IMDB_URL } from './config'
-import { Icon } from './components/icon'
 import { sortByChronological, sortByReleaseDate } from './utils/sorter'
 import { Movie } from './data/types/movies'
 import { OrderType } from './data/types/order'
 import { Header } from './components/header'
+import { OrderOptions } from './components/orderOptions'
+import { Card } from './components/card'
 
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -39,36 +39,14 @@ function App() {
     <div className="App">
       <Header />
 
-      <div>
-        <div className="buttons">
-          <p>Ordenar por:</p>
-          <div>
-            <button className={order === "RELEASE_DATE" ? "selected" : "default"} onClick={() => handleOrder("RELEASE_DATE")}>Ordem de lançamento</button>
-            <button className={order === "CHRONOLOGICAL" ? "selected" : "default"} onClick={() => handleOrder("CHRONOLOGICAL")}>Ordem cronológica</button>
-          </div>
-        </div>
-        <p className="appOrderBy">order by @rodrigo_souza_feliciano</p>
-      </div>
+      <OrderOptions order={order} handleOrder={handleOrder} />
 
-      <div className="cardBox">
-        {movies.map((movie: Movie, index: number) => {
-          return (
-            <div key={index} className="card">
-              <h2  className="title">{movie.original_title}</h2>
-              <div className="top">
-                <img className="appImg" src={`${IMAGE_URL}/${movie.poster_path}`} />
-                <div className="iconBox">
-                  <Icon path={`${IMDB_URL}${movie.imdb_id}`} alt="Ver no IMDB" icon="imdb" />
-                  <Icon path={movie.homepage} alt="Ver na Marvel" icon="marvel" />
-                </div>
-              </div>
-              <div key={movie.imdb_id}>
-                <p className="overviewBox">{movie.overview}</p>
-                <p>Release date: {movie.release_date}</p>
-              </div>
-            </div>
-          )}
-        )}
+      <div className="appCardBox">
+        {movies.map((movie: Movie) => (
+          <div key={movie.index} className="appCard">
+            <Card {...movie} />
+          </div>
+        ))}
       </div>
     </div>
   )
