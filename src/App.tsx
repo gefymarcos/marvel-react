@@ -14,23 +14,29 @@ function App() {
 
   useEffect(() => {
     getMovies().then(result => {
-      setMovies(result)
-      localStorage.setItem("data", JSON.stringify(result))
+      const localOrder = getLocalOrder();
+      setOrder(localOrder);
+      orderMovies(localOrder, result);
+      localStorage.setItem("data", JSON.stringify(result));
     });
   }, [])
 
-  useEffect(() => {
-    setOrder(localStorage.getItem("order") as OrderType || "RELEASE_DATE");
-  }, [])
-
-  const handleOrder = (order: OrderType) => {
-    setOrder(order);
-
+  const orderMovies = (order: OrderType, movies: Movie[]) => {
     if (order === "RELEASE_DATE") {
       setMovies(sortByReleaseDate(movies));
     } else {
       setMovies(sortByChronological(movies));
     }
+  }
+
+  const getLocalOrder = () => {
+    return localStorage.getItem("order") as OrderType || "RELEASE_DATE";
+  }
+
+  const handleOrder = (order: OrderType) => {
+    setOrder(order);
+
+    orderMovies(order, movies);
 
     localStorage.setItem("order", order);
   }
