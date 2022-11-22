@@ -2,6 +2,8 @@
 
 React Marvel App is a React App created for the React Starter Talk presented at November tech by SENAC.
 
+[Acessar slides](https://speakerdeck.com/gefymarcos/reactjs-starter)
+
 ## Vite
 
 This project was created using vite, for create a new project use the command below:
